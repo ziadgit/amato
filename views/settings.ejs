@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+</head>
+<body>
+    <h1>Settings</h1>
+    <form action="/settings" method="post">
+        <label for="duration">Pomodoro Duration (in minutes):</label>
+        <input type="number" id="duration" name="duration" min="1" max="60" value="<%= duration %>">
+        <button type="submit">Save</button>
+    </form>
+    <a href="/">Go back</a>
+</body>
+</html>
