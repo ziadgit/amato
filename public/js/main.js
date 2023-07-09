@@ -19,3 +19,9 @@ pauseButton.addEventListener('click', () => {
 resetButton.addEventListener('click', () => {
     socket.emit('reset_timer');
 });
+
+socket.on('pomodoro_end', () => {
+    alert("Pomodoro is over!");
+    // If you want to play a sound, uncomment the following line
+    new Audio('/sounds/beep.wav').play();
+});

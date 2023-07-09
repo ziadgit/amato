@@ -40,6 +40,7 @@ io.on('connection', (socket) => {
                 io.emit('timer', formatTime(timer));
             } else {
                 clearInterval(interval); // Stop the interval when timer reaches 0
+                io.emit('pomodoro_end');
             }
         }, 1000);
     });
