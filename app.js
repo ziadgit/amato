@@ -4,6 +4,7 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 let duration = 25; // Default Pomodoro duration
 let timer = duration * 60;
+let interval;
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -32,15 +33,23 @@ app.post('/settings', (req, res) => {
 io.on('connection', (socket) => {
     console.log('a user connected');
     socket.on('start_timer', () => {
-        setInterval(() => {
+        clearInterval(interval); // Ensure no other intervals are running
+        interval = setInterval(() => {
             if(timer > 0) {
                 timer--;
                 io.emit('timer', formatTime(timer));
+            } else {
+                clearInterval(interval); // Stop the interval when timer reaches 0
             }
         }, 1000);
     });
 
+    socket.on('pause_timer', () => {
+        clearInterval(interval);
+    });
+
     socket.on('reset_timer', () => {
+        clearInterval(interval);
         timer = duration * 60;
         io.emit('timer', formatTime(timer));
     });
