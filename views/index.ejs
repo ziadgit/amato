@@ -11,6 +11,13 @@
     <div id="timer"><%= timer %></div>
     <a href="/settings">Settings</a>
     <a href="/log">Completed Pomodoros</a>
+	
+	<dialog id="favDialog">
+  <p>Pomodoro Complete.</p>
+  <form method="dialog">
+    <button>OK</button>
+  </form>
+</dialog>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/main.js"></script>

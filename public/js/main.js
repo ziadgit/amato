@@ -3,6 +3,7 @@ const timerDiv = document.getElementById('timer');
 const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
 const resetButton = document.getElementById('reset');
+const favDialog = document.getElementById("favDialog");
 
 socket.on('timer', (timer) => {
     timerDiv.textContent = timer;
@@ -23,6 +24,6 @@ resetButton.addEventListener('click', () => {
 socket.on('pomodoro_end', () => {
 	// If you want to play a sound, uncomment the following line
     new Audio('/sounds/beep.wav').play();
-    alert("Pomodoro is over!");
-    
+    // alert("Pomodoro is over!");
+    favDialog.showModal();
 });
