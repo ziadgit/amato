@@ -5,7 +5,7 @@ const io = require('socket.io')(http);
 let duration = 25; // Default Pomodoro duration
 let timer = duration * 60;
 let interval;
-let completedPomodoros = []; // Array to hold completed pomodoro timestamps
+// let completedPomodoros = []; // Array to hold completed pomodoro timestamps
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -37,7 +37,7 @@ app.post('/settings', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log('a user connected');
-    socket.on('start_timer', () => {
+	socket.on('start_timer', () => {
         clearInterval(interval); // Ensure no other intervals are running
         interval = setInterval(() => {
             if(timer > 0) {
@@ -46,7 +46,8 @@ io.on('connection', (socket) => {
             } else {
                 clearInterval(interval); // Stop the interval when timer reaches 0
                 io.emit('pomodoro_end');
-                completedPomodoros.push(new Date()); // Log the completion time
+                io.emit('pomodoro_completed', new Date()); // Send the completion time
+				console.log('foo');
             }
         }, 1000);
     });
@@ -60,6 +61,8 @@ io.on('connection', (socket) => {
         timer = duration * 60;
         io.emit('timer', formatTime(timer));
     });
+	
+	
 });
 
 http.listen(3000, () => {
