@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Layout</title>
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Pomodoro Timer</title>
 </head>
 <body>
-    <h1>Pomodoro Timer</h1>
+    <div class="container">
+        <div class="content">
+            <!-- Your content goes here -->
+            <h1>Pomodoro Timer</h1>
     <button id="start">Start</button>
     <button id="pause">Pause</button>
     <button id="reset">Reset</button>
     <div id="timer"><%= timer %></div>
     <a href="/settings">Settings</a>
-   
+   <br>
 	<button id="show">Show Log</button>
     <div id="log"></div>
 	
@@ -25,5 +32,7 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/main.js"></script>
+        </div>
+    </div>
 </body>
 </html>

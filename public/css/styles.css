@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Optional: Change the background color */
+}
+
+.container {
+    max-width: 800px; /* Optional: Set a maximum width for the content */
+    padding: 20px;
+}
+
+.content {
+    text-align: center;
+}
