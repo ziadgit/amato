@@ -25,14 +25,21 @@ resetButton.addEventListener('click', () => {
 showLog.addEventListener('click', () => {
 	let completedPomodoros = JSON.parse(localStorage.getItem('completedPomodoros')) || [];
     let logDiv = document.getElementById('log');
-    logDiv.innerHTML = '';
-	let reversedPomodoros = [...completedPomodoros].reverse();
-    reversedPomodoros.forEach(function(pomodoro) {
-        let logItem = document.createElement('div');
-        let date = new Date(pomodoro);
-        logItem.textContent = date.toLocaleString(); // Converts the date into a string, using the current locale's conventions.
-        logDiv.appendChild(logItem);
-});
+    if (showLog.innerHTML == 'Show Log') {
+        showLog.innerHTML = 'Hide Log';
+        logDiv.innerHTML = '';
+        let reversedPomodoros = [...completedPomodoros].reverse();
+        reversedPomodoros.forEach(function(pomodoro) {
+            let logItem = document.createElement('div');
+            let date = new Date(pomodoro);
+            logItem.textContent = date.toLocaleString(); // Converts the date into a string, using the current locale's conventions.
+            logDiv.appendChild(logItem);
+             });
+    }
+    else {
+        showLog.innerHTML = 'Show Log';
+        logDiv.innerHTML = '';
+    }
 });
 
 socket.on('pomodoro_end', () => {
