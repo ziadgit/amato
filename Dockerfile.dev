@@ -1,0 +1,26 @@
+FROM node:12-buster-slim AS builder
+
+# Declaring env
+ENV NODE_ENV development
+
+WORKDIR /tomo
+COPY . .
+
+RUN apt-get update
+RUN apt-get -y install curl
+RUN npm install -g n
+RUN n prune
+RUN n 18.16.1
+
+FROM node:12-buster-slim
+
+RUN apt-get update
+RUN apt-get -y install curl
+RUN npm install -g n
+RUN n prune
+RUN n 18.16.1
+USER 1000
+WORKDIR /tomo
+COPY --from=builder /tomo .
+EXPOSE 3000
+CMD ["node", "app.js"]
