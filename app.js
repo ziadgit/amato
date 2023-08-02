@@ -56,6 +56,13 @@ io.on('connection', (socket) => {
         clearInterval(interval);
     });
 
+    socket.on('set_pomo', () => {
+        clearInterval(interval);
+        duration = 25;
+        timer = duration * 60;
+        io.emit('timer', formatTime(timer));
+    });
+
     socket.on('reset_timer', () => {
         clearInterval(interval);
         timer = duration * 60;
@@ -64,13 +71,15 @@ io.on('connection', (socket) => {
 	
     socket.on('short_break', () => {
         clearInterval(interval);
-        timer = 5 * 60;
+        duration = 5;
+        timer = duration * 60;
         io.emit('timer', formatTime(timer));
     });
 
     socket.on('long_break', () => {
         clearInterval(interval);
-        timer = 10 * 60;
+        duration = 10;
+        timer = duration * 60;
         io.emit('timer', formatTime(timer));
     });
 	

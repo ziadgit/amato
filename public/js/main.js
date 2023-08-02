@@ -1,5 +1,6 @@
 const socket = io();
 const timerDiv = document.getElementById('timer');
+const pomoButton = document.getElementById('tomato');
 const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
 const resetButton = document.getElementById('reset');
@@ -11,6 +12,10 @@ const showLog = document.getElementById('show');
 socket.on('timer', (timer) => {
     timerDiv.textContent = timer;
 });
+
+pomoButton.addEventListener('click', () => {
+    socket.emit('set_pomo');
+}); 
 
 startButton.addEventListener('click', () => {
     socket.emit('start_timer');
