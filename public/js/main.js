@@ -3,8 +3,10 @@ const timerDiv = document.getElementById('timer');
 const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
 const resetButton = document.getElementById('reset');
+const shortButton = document.getElementById('short');
+const longButton = document.getElementById('long');
 const favDialog = document.getElementById("favDialog");
-const showLog = document.getElementById("show");
+const showLog = document.getElementById('show');
 
 socket.on('timer', (timer) => {
     timerDiv.textContent = timer;
@@ -20,6 +22,14 @@ pauseButton.addEventListener('click', () => {
 
 resetButton.addEventListener('click', () => {
     socket.emit('reset_timer');
+});
+
+shortButton.addEventListener('click', () =>  {
+    socket.emit('short_break');
+});
+
+longButton.addEventListener('click', () =>  {
+    socket.emit('long_break');
 });
 
 showLog.addEventListener('click', () => {
