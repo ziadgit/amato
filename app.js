@@ -18,7 +18,7 @@ function formatTime(seconds) {
 }
 
 app.get('/', (req, res) => {
-    res.render('index', { timer: formatTime(timer) });
+    res.render('index', { timer: formatTime(timer), duration: duration});
 });
 
 app.get('/log', (req, res) => {
@@ -43,6 +43,7 @@ io.on('connection', (socket) => {
             if(timer > 0) {
                 timer--;
                 io.emit('timer', formatTime(timer));
+                io.emit('progress', timer);
             } else {
                 clearInterval(interval); // Stop the interval when timer reaches 0
                 io.emit('pomodoro_end');
@@ -61,6 +62,7 @@ io.on('connection', (socket) => {
         duration = 25;
         timer = duration * 60;
         io.emit('timer', formatTime(timer));
+        io.emit('duration', duration)
     });
 
     socket.on('reset_timer', () => {
@@ -74,6 +76,7 @@ io.on('connection', (socket) => {
         duration = 5;
         timer = duration * 60;
         io.emit('timer', formatTime(timer));
+        io.emit('duration', duration);
     });
 
     socket.on('long_break', () => {
