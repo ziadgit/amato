@@ -1,7 +1,7 @@
 const socket = io();
 const timerDiv = document.getElementById('timer');
 const durationDiv = document.getElementById('duration');
-const progress = document.getElementById('tomate');
+// const progress = document.getElementById('tomate');
 const pomoButton = document.getElementById('tomato');
 const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
@@ -17,8 +17,8 @@ socket.on('timer', (timer) => {
 
 socket.on('progress', (timer) => {
     const mins = Math.floor(timer / 60);
-    progress.max = durationDiv.textContent;
-    progress.value = durationDiv.textContent - mins - 1;
+//    progress.max = durationDiv.textContent;
+//    progress.value = durationDiv.textContent - mins - 1;
 });
 
 socket.on('duration', (duration) => {
@@ -71,7 +71,7 @@ showLog.addEventListener('click', () => {
 
 socket.on('pomodoro_end', () => {
 	// If you want to play a sound, uncomment the following line
-    progress.value = progress.max;
+    //    progress.value = progress.max;
     new Audio('/sounds/beep.wav').play();
     // alert("Pomodoro is over!");
     favDialog.showModal();
