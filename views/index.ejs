@@ -3,31 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered Layout</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <title>Pomodoro Timer</title>
+    <title>Amato: A Pomodoro Timer by Bitparasol</title>
 </head>
 <body>
     <div class="container">
         <div class="content">
             <!-- Your content goes here -->
-            <h1>Pomodoro Timer</h1>
+            <h1>Amato: A Pomodoro Timer by Bitparasol</h1>
             <button id="tomato">Pomodoro</button>
             <button id="short">Short Break</button>
             <button id="long">Long Break</button>
             
            
             <div id="timer"><%= timer %></div>
-            <div id="duration"><%= duration %></div>
+            <div id="duration" style="display:none"><%= duration %></div>
             <button id="start">Start</button>
             <button id="pause">Pause</button>
             <button id="reset">Reset</button>
             <button id="show">Show Log</button> 
             <br>
-            <a href="/settings">Settings</a>
+            <!-- <a href="/settings">Settings</a> -->
             <br>
-            <label for="tomate">Pomodoro Progress</label>
-            <progress id="tomate" value="0" max="25"> 0 </progress>
             <div id="log"></div>
             
             <dialog id="favDialog">
