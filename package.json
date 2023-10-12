@@ -1,6 +1,6 @@
 {
-  "name": "mopomo",
-  "version": "1.0.0",
+  "name": "amato: a pomodoro timer by bitparasol",
+  "version": "0.0.1.2",
   "description": "",
   "main": "index.js",
   "scripts": {
