@@ -3,7 +3,7 @@ FROM node:12-buster-slim AS builder
 # Declaring env
 ENV NODE_ENV development
 
-WORKDIR /tomo
+WORKDIR /amato
 COPY . .
 
 RUN apt-get update
@@ -20,7 +20,7 @@ RUN npm install -g n
 RUN n prune
 RUN n 18.16.1
 USER 1000
-WORKDIR /tomo
-COPY --from=builder /tomo .
+WORKDIR /amato
+COPY --from=builder /amato .
 EXPOSE 3000
 CMD ["node", "app.js"]
