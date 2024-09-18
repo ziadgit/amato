@@ -4,4 +4,4 @@ This app is designed primarily to be used on UmbrelOS.
 
 Follow its development at 
 
-https://github.com/getumbrel/umbrel-apps/pull/729
+https://github.com/getumbrel/umbrel-apps/pull/1497
